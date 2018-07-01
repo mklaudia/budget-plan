@@ -1,32 +1,37 @@
-const path = require('path');
+// const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/entry.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
-    },
-     resolve: {
-        extensions: ['.js', '.jsx'],
-    },
-    devtool: 'source-map',
+    entry: [
+        'react-hot-loader/patch',
+        './src/index.js'
+    ],
     module: {
         rules: [
           {
-            test: /\.jsx?$/,
+            test: /\.(js|jsx)$/,
             exclude: /node_modules/,
-            use: {
-              loader: 'babel-loader',
-              options: {
-                presets: ['env', 'react']
-              }
-            }
+            use: ['babel-loader']
+            
           }
         ]
     },
+    resolve: {
+        extensions: ['*', '.js', '.jsx']
+    },
+    output: {
+		path: __dirname + '/dist',
+		publicPath: '/',
+		filename: 'bundle.js'
+    },
+
+    // devtool: 'source-map',
+
     plugins: [
-        new HtmlWebpackPlugin()
-    ]
+		new webpack.HotModuleReplacementPlugin()
+	],
+	devServer: {
+		contentBase: './dist',
+		hot: true
+	}
 }
