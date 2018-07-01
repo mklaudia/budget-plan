@@ -1,6 +1,4 @@
-// const path = require('path');
 const webpack = require('webpack');
-
 module.exports = {
     entry: [
         'react-hot-loader/patch',
@@ -24,9 +22,6 @@ module.exports = {
 		publicPath: '/',
 		filename: 'bundle.js'
     },
-
-    // devtool: 'source-map',
-
     plugins: [
 		new webpack.HotModuleReplacementPlugin()
 	],

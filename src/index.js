@@ -6,6 +6,3 @@ const node = document.createElement('div');
 document.body.appendChild(node);
 
 ReactDOM.render(<App/>, node);
-console.log(
-    "Hi"
-);
