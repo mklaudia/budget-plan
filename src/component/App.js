@@ -1,32 +1,50 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import uuid from 'uuid';
+import {connect} from "react-redux";
+
 import Header from './header/Header';
 import Input from './inputs/Input';
-import uuid from 'uuid';
+import EntryList from './output/EntryList';
+
+import {actionToInitEntries, actionToAddEntry, actionToEditEntry} from '../action/entryActions';
+import entryStore from '../store/entryStore';
 
 const createEntry = (isIncome, amount, date, label) => ({
-    uuid: uuid(), isIncome, amount, date, label
+    key: uuid(), isIncome, amount, date, label
 });
 
 let today = new Date();
+const getPastDate = (daysBefore) => {
+    let date = new Date();
+    date.setDate(date.getDate()-daysBefore);
+    return date;
+}
+
 let initialEntries = [
-    createEntry(true, 234, (today.setDate( today.getDate -10 )).toString(), "Income 1"),
-    createEntry(true, 24, (today.setDate( today.getDate -6 )).toString(), "Income 2"),
-    createEntry(true, 72, (today.setDate( today.getDate -2 )).toString(), "Income 3"),
-    createEntry(true, 12, (today.setDate( today.getDate -12 )).toString(), "Spending 1"),
-    createEntry(true, 2, (today.setDate( today.getDate -5 )).toString(), "Spending 2"),
-    createEntry(true, 31, (today.setDate( today.getDate -4 )).toString(), "Spending 3"),
-    createEntry(true, 122, (today.setDate( today.getDate -2 )).toString(), "Spending 4"),
+    createEntry(true, 234,  getPastDate(2),     "Income 1"),
+    createEntry(false, 12,  getPastDate(12),    "Spending 1"),
+    createEntry(true, 24,   getPastDate(6),     "Income 2"),
+    createEntry(true, 72,   getPastDate(0),     "Income 3"),
+    createEntry(false, 2,    getPastDate(5),     "Spending 2"),
+    createEntry(false, 31,   getPastDate(4),     "Spending 3"),
+    createEntry(false, 122,  getPastDate(2),     "Spending 4"),
 ]
 
-export default class App extends Component {
+class App extends Component {
     state = {
         entries: initialEntries,
         grandTotal : 0
     }
 
-    componentDidMount(){
+    componentWillMount(){
+        console.log("will mount");
+        this.props.dispatch(actionToInitEntries(initialEntries));
         this.setState({grandTotal: this.getGrandTotal()});
+    }
+
+    componentDidMount(){
+        console.log("mounted");
     }
     
     getGrandTotal = () => {
@@ -43,6 +61,14 @@ export default class App extends Component {
         <div>
             <Header />
             <Input />
+            <EntryList entries={this.state.entries}/>
         </div>);
     };
 }
+
+const mapStateToProps = state =>  ({
+    entries: state.entries
+});
+
+
+export default connect(mapStateToProps)(App);
