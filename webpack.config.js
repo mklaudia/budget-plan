@@ -4,6 +4,7 @@ module.exports = {
         'react-hot-loader/patch',
         './src/index.js'
     ],
+    mode: "development",
     module: {
         rules: [
           {
@@ -25,9 +26,10 @@ module.exports = {
     },
     plugins: [
 		new webpack.HotModuleReplacementPlugin()
-	],
+  ]
+  ,
 	devServer: {
 		contentBase: './dist',
 		hot: true
-	}
+  }
 }
