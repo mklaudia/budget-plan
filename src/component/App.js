@@ -37,6 +37,7 @@ let initialEntries = [
     createEntry(false, 2,    getPastDate(5),     "Spending 2"),
     createEntry(false, 31,   getPastDate(4),     "Spending 3"),
     createEntry(false, 122,  getPastDate(2),     "Spending 4"),
+    {key: uuid(), isIncome: true},
 ]
 
 class App extends Component {
