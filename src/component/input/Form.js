@@ -14,15 +14,7 @@ const emptyInputsState = {
 
 export class Form extends Component {
     state = emptyInputsState;
-
-    // constructor (props) {
-    //     super(props)
-    //     // this.state = {
-    //     //   startDate: moment()
-    //     // };
-    //     this.handleChange = this.handleChange.bind(this);
-    // }
-
+    
     onClickOnAddIncome = (event) => {
         console.log("Income", event);
         this.props.dispatch(actionToAddEntry({...this.state, isIncome: true}));
