@@ -1,7 +1,10 @@
 {
-    "presets": [
-      "env",
+  "presets": [
+      ["env", {
+      "targets": {
+          "chrome": 67
+          }
+      }],
       "react",
-      "stage-2"
-    ]
-  }
+  "stage-2"]
+}
