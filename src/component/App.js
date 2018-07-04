@@ -4,7 +4,6 @@ import uuid from 'uuid';
 import {connect} from "react-redux";
 
 import Header from './header/Header';
-import Input from './input/Input';
 import Form from './input/Form';
 import EntryList from './output/EntryList';
 
@@ -59,23 +58,14 @@ class App extends Component {
         return (
         <div>
             <Header />
-
-            <Input />
             <Form />
-            {console.log("AAAAA", this.props.entries)}
             <EntryList entries={this.props.entries}/>
-            {/* <EntryList entries={this.state.entries}/> */}
         </div>);
     };
 }
 
-// const mapStateToProps = state =>  ({
-//     entries: state.entries
-// });
-
 const mapStateToProps = state =>  ({
     entries: entryStore.getState()
 });
-
 
 export default connect(mapStateToProps)(App);
