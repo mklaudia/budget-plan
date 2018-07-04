@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "build": "webpack --mode development",
     "serve": "webpack-dev-server --open",
-    "hello": "echo \"Hello, use 'npm run-script hello' to see this.\"",
-    "build": "webpack -p --progress"
+    "hello": "echo \"Hello, use 'npm run-script hello' to see this.\""
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
