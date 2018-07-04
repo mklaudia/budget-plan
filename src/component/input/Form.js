@@ -22,7 +22,7 @@ export class Form extends Component {
 
     onClickOnAddSpending = (event) => {
         console.log("Spending", event);
-        this.props.dispatch(actionToAddEntry(this.state));
+        this.props.dispatch(actionToAddEntry({...this.state, isIncome: false}));
     };
 
     clearInputs = () => {
