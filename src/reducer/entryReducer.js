@@ -1,4 +1,4 @@
-import {INIT, ADD_ENTRY, EDIT_ENTRY} from '../action/entryActions';
+import {INIT, ADD_ENTRY, EDIT_ENTRY, DELETE_ENTRY} from '../action/entryActions';
 
 import uuid from 'uuid';
 
@@ -12,6 +12,10 @@ const entryReducer = (state = [], action) => {
             return state.map(entry => 
                 entry.key === action.payload.key ? action.payload : entry
             );
+        case DELETE_ENTRY:
+            return state.filter(entry => 
+                entry.key !== action.payload.key
+        );
         default: return state;
     }
 };

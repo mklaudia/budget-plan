@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import {connect} from "react-redux";
+
+import {actionToEditEntry, actionToDeleteEntry} from '../../action/entryActions';
 
 const defaultEntry =  {
     isIncome: true,
@@ -11,7 +14,12 @@ const defaultEntry =  {
     date: moment()
 };
 
-export default class Entry extends Component{
+class Entry extends Component{
+    onDelete = () => {
+        console.log("del", this.props);
+        this.props.dispatch(actionToDeleteEntry(this.props.entry));
+    }
+
     render(){
         {console.log(this.props)}
         const entry = {...defaultEntry, ...this.props.entry};
@@ -22,10 +30,17 @@ export default class Entry extends Component{
                 <label>{entry.date.toString()}</label>
                 <span> - </span>
                 <label>{entry.info}</label>
+                <input 
+                    type="submit"
+                    value = "X"
+                    onClick={() => {this.onDelete()}}
+                />
             </DifferedEntries>
         );
     }
 }
+
+
 
 const DifferedEntries = styled.section`
     color: ${props => props.isIncome ? 'green' : 'red'}
@@ -51,3 +66,9 @@ Entry.propTypes = {
         date: PropTypes.object
     })
 }
+
+const mapStateToProps = state =>  ({
+    entries: state.entries
+});
+
+export default connect(mapStateToProps)(Entry);
