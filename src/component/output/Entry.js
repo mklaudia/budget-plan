@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import {formatDate} from '../formatter/DateFormatter'
 
 export default class Entry extends Component{
     render(){
         const entry = this.props.entry;
-        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         return(
             <DifferedEntries isIncome={entry.isIncome}>
                 <label>{entry.amount}</label>
                 <span> - </span>
-                <label>{entry.date.toLocaleDateString("en-US", options)}</label>
+                <label>{formatDate(entry.date)}</label>
             </DifferedEntries>
         );
     }

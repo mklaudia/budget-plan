@@ -4,14 +4,14 @@ import uuid from 'uuid';
 import {connect} from "react-redux";
 
 import Header from './header/Header';
-import Input from './inputs/Input';
+import Form from './input/Form';
 import EntryList from './output/EntryList';
 
 import {actionToInitEntries, actionToAddEntry, actionToEditEntry} from '../action/entryActions';
 import entryStore from '../store/entryStore';
 
-const createEntry = (isIncome, amount, date, label) => ({
-    key: uuid(), isIncome, amount, date, label
+const createEntry = (isIncome, amount, date, info) => ({
+    key: uuid(), isIncome, amount, date, info
 });
 
 let today = new Date();
@@ -32,43 +32,40 @@ let initialEntries = [
 ]
 
 class App extends Component {
-    state = {
-        entries: initialEntries,
-        grandTotal : 0
-    }
+    // state = {
+    //     entries: initialEntries,
+    //     grandTotal : 0
+    // }
 
     componentWillMount(){
         console.log("will mount");
         this.props.dispatch(actionToInitEntries(initialEntries));
-        this.setState({grandTotal: this.getGrandTotal()});
+
+        // this.setState({grandTotal: this.getGrandTotal()});
     }
 
-    componentDidMount(){
-        console.log("mounted");
-    }
     
-    getGrandTotal = () => {
-        let total = 0;
-        this.state.entries.forEach(element => {
-            let multiplier = element.isIncome ? 1 : -1;
-            total += multiplier * element.amount;
-        });
-        return total;
-    }
+    // getGrandTotal = () => {
+    //     let total = 0;
+    //     this.state.entries.forEach(element => {
+    //         let multiplier = element.isIncome ? 1 : -1;
+    //         total += multiplier * element.amount;
+    //     });
+    //     return total;
+    // }
 
     render () {
         return (
         <div>
             <Header />
-            <Input />
-            <EntryList entries={this.state.entries}/>
+            <Form />
+            <EntryList entries={this.props.entries}/>
         </div>);
     };
 }
 
 const mapStateToProps = state =>  ({
-    entries: state.entries
+    entries: entryStore.getState()
 });
-
 
 export default connect(mapStateToProps)(App);
