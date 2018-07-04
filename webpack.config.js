@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 module.exports = {
     entry: [
         'react-hot-loader/patch',
@@ -19,10 +20,9 @@ module.exports = {
     resolve: {
         extensions: ['*', '.js', '.jsx']
     },
-    output: {
-		path: __dirname + '/dist',
-		publicPath: '/',
-		filename: 'bundle.js'
+    output:{
+      path: path.resolve(__dirname + '/dist'),
+      filename: 'bundle-[hash].js'
     },
     plugins: [
 		new webpack.HotModuleReplacementPlugin()
