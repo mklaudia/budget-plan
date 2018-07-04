@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import uuid from 'uuid';
 import {connect} from "react-redux";
+import moment from 'moment';
 
 import Header from './header/Header';
 import Form from './input/Form';
@@ -14,12 +15,19 @@ const createEntry = (isIncome, amount, date, info) => ({
     key: uuid(), isIncome, amount, date, info
 });
 
-let today = new Date();
-const getPastDate = (daysBefore) => {
+let today1 = new Date();
+const getPastDate1 = (daysBefore) => {
     let date = new Date();
     date.setDate(date.getDate()-daysBefore);
     return date;
 }
+
+const getPastDate = (daysBefore) => {
+    let date = moment();
+    date.subtract(daysBefore);
+    return date;
+}
+
 
 let initialEntries = [
     createEntry(true, 234,  getPastDate(2),     "Income 1"),

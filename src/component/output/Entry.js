@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import {formatDate} from '../formatter/DateFormatter'
 
 export default class Entry extends Component{
     render(){
@@ -9,7 +8,9 @@ export default class Entry extends Component{
             <DifferedEntries isIncome={entry.isIncome}>
                 <label>{entry.amount}</label>
                 <span> - </span>
-                <label>{formatDate(entry.date)}</label>
+                <label>{entry.date.toString()}</label>
+                <span> - </span>
+                <label>{entry.info}</label>
             </DifferedEntries>
         );
     }

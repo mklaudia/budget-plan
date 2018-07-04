@@ -1,16 +1,27 @@
 import React, {Component} from 'react';
+import DatePicker from 'react-datepicker';
+// import './datepicker.css';
+import moment from 'moment';
 
 import {actionToAddEntry, actionToEditEntry} from '../../action/entryActions';
 import {connect} from "react-redux";
 
 const emptyInputsState = {
     amount: "",
-    date: new Date(),
+    date: moment(),
     info: ""
 };
 
 export class Form extends Component {
     state = emptyInputsState;
+
+    // constructor (props) {
+    //     super(props)
+    //     // this.state = {
+    //     //   startDate: moment()
+    //     // };
+    //     this.handleChange = this.handleChange.bind(this);
+    // }
 
     onClickOnAddIncome = (event) => {
         console.log("Income", event);
@@ -24,6 +35,12 @@ export class Form extends Component {
 
     clearInputs = () => {
         state = emptyInputsState
+    }
+
+    handleChange = (date) => {
+        this.setState({
+          startDate: date
+        });
     }
 
     render(){
@@ -40,11 +57,9 @@ export class Form extends Component {
                     value = {this.state.amount}
                     onChange={event => this.setState({amount: event.target.value})}
                 />
-                <input
-                    type="date"
-                    placeholder="Date"
-                    value = {this.state.date}
-                    onChange={event => this.setState({date: event.target.valuecurr.toISOString().substr(0,10)})}
+                <DatePicker
+                    selected={this.state.date}
+                    onChange={this.handleChange}
                 />
                 <input
                     type="text"
