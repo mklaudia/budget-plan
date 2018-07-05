@@ -25,26 +25,31 @@ export default class EntryList extends Component{
             <div>
                 <Router>
                     <div>
-                    <Route exact path="/aa" render={props => {
-                            console.log(props)
-                            return(
-                            <div>Hello You
-                                 {(this.getFilteredEntries(ALL, entries)).map(entry => <Entry key={entry.key} entry={entry}/>)}
-                            </div>);
-                            // {entries.map(entry => <Entry key={entry.key} entry={entry}/>)}
-                        }} 
-                    />
+                        <Route exact path="/incomes" render={props => (
+                                <div>These are all your incomes! :)</div>
+                            )}
+                        />
 
-                    <Route exact path="/incomes" render={props => {
-                            console.log(props)
-                            return(
-                            <div>Hello You
-                                 {(this.getFilteredEntries(INCOMES, entries)).map(entry => <Entry key={entry.key} entry={entry}/>)}
-                            </div>);
-                            // {entries.map(entry => <Entry key={entry.key} entry={entry}/>)}
-                        }} 
-                    />
+                        <Route exact path="/" render={props => 
+                                this.getFilteredEntries(ALL, entries).map( 
+                                    entry => <Entry key={entry.key} entry={entry}/> 
+                                )
+                            }
+                        />
 
+                        <Route exact path="/incomes" render={props => 
+                                this.getFilteredEntries(INCOMES, entries).map( 
+                                    entry => <Entry key={entry.key} entry={entry}/> 
+                                )
+                            }
+                        />
+
+                        <Route exact path="/spendings" render={props => 
+                                this.getFilteredEntries(SPENDINGS, entries).map( 
+                                    entry => <Entry key={entry.key} entry={entry}/> 
+                                )
+                            }
+                        />
                     </div>
 				</Router>
                 {/* {entries.map(entry => <Entry key={entry.key} entry={entry}/>)} */}
