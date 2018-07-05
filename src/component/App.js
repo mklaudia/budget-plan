@@ -7,6 +7,7 @@ import moment from 'moment';
 import Header from './header/Header';
 import Form from './input/Form';
 import EntryList from './output/EntryList';
+import Filter from './filter/Filter';
 
 import {actionToInitEntries, actionToAddEntry, actionToEditEntry} from '../action/entryActions';
 import entryStore from '../store/entryStore';
@@ -37,7 +38,7 @@ let initialEntries = [
     createEntry(false, 2,    getPastDate(5),     "Spending 2"),
     createEntry(false, 31,   getPastDate(4),     "Spending 3"),
     createEntry(false, 122,  getPastDate(2),     "Spending 4"),
-    {key: uuid(), isIncome: true},
+    {amount: 0, key: uuid(), isIncome: true},
 ]
 
 class App extends Component {
@@ -68,6 +69,7 @@ class App extends Component {
         <div>
             <Header />
             <Form />
+            <Filter />
             <EntryList entries={this.props.entries}/>
         </div>);
     };
