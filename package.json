@@ -1,12 +1,17 @@
 {
   "name": "budget-plan",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.dev.js --mode development",
     "prod": "webpack-dev-server --config ./webpack.prod.js --mode development",
     "build": "webpack --mode development",
     "serve": "webpack-dev-server --open",
     "hello": "echo \"Hello, use 'npm run-script hello' to see this.\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mklaudia/budget-plan"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
