@@ -7,6 +7,7 @@ import moment from 'moment';
 import Header from './header/Header';
 import Form from './input/Form';
 import EntryList from './output/EntryList';
+import Filter from './filter/Filter';
 
 import {actionToInitEntries, actionToAddEntry, actionToEditEntry} from '../action/entryActions';
 import entryStore from '../store/entryStore';
@@ -68,6 +69,7 @@ class App extends Component {
         <div>
             <Header />
             <Form />
+            <Filter />
             <EntryList entries={this.props.entries}/>
         </div>);
     };
