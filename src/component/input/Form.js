@@ -6,6 +6,8 @@ import moment from 'moment';
 import {actionToAddEntry, actionToEditEntry} from '../../action/entryActions';
 import {connect} from "react-redux";
 
+const maxWaitSec = 8;
+
 const emptyInputsState = {
     amount: "",
     date: moment(),
@@ -14,16 +16,26 @@ const emptyInputsState = {
 
 export class Form extends Component {
     state = emptyInputsState;
+
+    getRandWaitTime = () => {
+        return (Math.floor(Math.random() * maxWaitSec) + 1) * 1000; 
+    }
     
-    onClickOnAddIncome = (event) => {
-        console.log("Income", event);
-        this.props.dispatch(actionToAddEntry({...this.state, isIncome: true}));
+    onClickOnAddIncome = () => {
+        this.addEntry("Income", true);
     };
 
-    onClickOnAddSpending = (event) => {
-        console.log("Spending", event);
-        this.props.dispatch(actionToAddEntry({...this.state, isIncome: false}));
+    onClickOnAddSpending = () => {
+        this.addEntry("Spending", false);
     };
+
+    addEntry = (name, isIncome) => {
+        const time = this.getRandWaitTime();
+        console.log(name ,"... wait ", time / 1000, "s");
+        setTimeout(() => {
+            this.props.dispatch(actionToAddEntry({...this.state, isIncome: isIncome}))
+        }, time)
+    }
 
     clearInputs = () => {
         state = emptyInputsState
