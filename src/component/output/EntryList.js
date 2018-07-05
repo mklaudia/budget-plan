@@ -17,10 +17,8 @@ export default class EntryList extends Component{
         }
     }
 
-
     render(){
         const  {entries}  = this.props ;
-
         return(
             <div>
                 <Router>
@@ -52,7 +50,6 @@ export default class EntryList extends Component{
                         />
                     </div>
 				</Router>
-                {/* {entries.map(entry => <Entry key={entry.key} entry={entry}/>)} */}
             </div>
         );
     }
