@@ -1,4 +1,102 @@
-/* .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
+
+.narrow {
+  width: 120px !important;
+}
+
+.wide{
+  width: 300px !important;
+}
+
+.form__field inline{
+  vertical-align: baseline;
+}
+
+.left-div, .mid-div, .rigt-div{
+  align-content: center !important;
+  text-align: center;
+  display: inline-block;
+  margin: auto !important;
+}
+
+.table{
+  margin: auto !important;
+}
+table td:nth-of-type(1) {width:20%;}
+table td:nth-of-type(2) {
+  text-align: center;
+}
+table th:nth-of-type(3) {width:20%;}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #201e32;
+  width: auto;
+}
+
+li {
+  float: left;
+  align-content: center;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111111;
+}
+
+.adaptive_placeholder(@height, @radius, @margin: 1em, @border: 1px) {
+  @borders: (@border * 2); // <- To avoid repeating below
+  // box-sizing: border-box;  // <- Important for accurate sizing
+  // width: 100%;             // <- Could be almost anything
+  height: ~"calc(@{height} + @{borders})"; 
+  margin: 0 0 @margin;
+  padding: @margin;
+  border: @border solid #ccc;
+  border-radius: @radius;
+  background: #fff;
+  resize: none;  // <- For textareas
+  outline: none; // <- Because ugly
+  //
+  // Following block controls all the color change
+  //
+}
+
+input {
+  @height: 3em;
+  &[type="number"] ,
+  &[type="text"] {
+    .adaptive_placeholder(@height, (@height / 2));
+  }
+}
+
+
+#last {
+  overflow:auto;
+  display:block;
+}
+
+
+
+
+
+
+
+
+
+ 
+ //Datepicker
+ 
+ .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
 .react-datepicker__month-read-view--down-arrow,
 .react-datepicker__month-year-read-view--down-arrow {
   margin-left: -8px;
@@ -640,4 +738,4 @@
 .react-datepicker__portal .react-datepicker__navigation--next--disabled, .react-datepicker__portal .react-datepicker__navigation--next--disabled:hover {
   border-left-color: #e6e6e6;
   cursor: default;
-} */
+} 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
-// import './datepicker.css';
+import styles from './Form.less';
 import moment from 'moment';
 
 import {actionToAddEntry, actionToEditEntry} from '../../action/entryActions';
@@ -43,40 +43,53 @@ export class Form extends Component {
 
     handleChange = (date) => {
         this.setState({
-          startDate: date
+          date: date
         });
     }
 
     render(){
         return(
-            <div>
-                <input
-                    type="submit"
-                    value = "Add Income"
-                    onClick={() => {this.onClickOnAddIncome()}}
-                />
-                <input
-                    type="number"
-                    placeholder="Amount"
-                    value = {this.state.amount}
-                    onChange={event => this.setState({amount: event.target.value})}
-                />
-                <DatePicker
-                    selected={this.state.date}
-                    onChange={this.handleChange}
-                />
-                <input
-                    type="text"
-                    placeholder="Info"
-                    value = {this.state.info}
-                    onChange={event => this.setState({info: event.target.value})}
-                />
-                <input
-                    type="submit"
-                    value = "Add Spending"
-                    onClick={() => {this.onClickOnAddSpending()}}
-                />
-            </div>
+            
+            <table className="table">
+            <tbody>
+                <tr>
+                <th className="left-div3">
+                    <input className="btn"
+                        type="submit"
+                        value = "Add Income"
+                        onClick={() => {this.onClickOnAddIncome()}}
+                    />
+                </th>
+    
+                <th className="mid-div">        
+                    <input className="form__field narrow"
+                        type="number"
+                        placeholder="Amount"
+                        value = {this.state.amount}
+                        onChange={event => this.setState({amount: event.target.value})}
+                    />
+                    <DatePicker className="form__field narrow"
+                        selected={this.state.date}
+                        onChange={this.handleChange}
+                    />
+                    <input className="form__field wide"
+                        type="text"
+                        placeholder="Info"
+                        value = {this.state.info}
+                        onChange={event => this.setState({info: event.target.value})}
+                    />
+                </th>
+
+                <th className="right-div">
+                    <input className="btn"
+                        type="submit"
+                        value = "Add Spending"
+                        onClick={() => {this.onClickOnAddSpending()}}
+                    />
+                </th>
+                </tr>
+            </tbody> 
+            </table>
         );
     }
 }

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
+import styles from './Header.less';
+
 class Header extends Component{
 
     render(){

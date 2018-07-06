@@ -24,18 +24,24 @@ class Entry extends Component{
         {console.log(this.props)}
         const entry = {...defaultEntry, ...this.props.entry};
         return(
+            <tr>
             <DifferedEntries isIncome={entry.isIncome}>
-                <label>{entry.amount}</label>
-                <span> - </span>
-                <label>{entry.date.toString()}</label>
-                <span> - </span>
-                <label>{entry.info}</label>
-                <input 
-                    type="submit"
-                    value = "X"
-                    onClick={() => {this.onDelete()}}
-                />
+              <td>
+                    <input 
+                        type="submit"
+                        value = "X"
+                        onClick={() => {this.onDelete()}}
+                    />
+                </td>
+
+                <td>{entry.amount}</td>
+                
+                <td>{entry.date.toString()}</td>
+               
+                <td>{entry.info}</td>
+
             </DifferedEntries>
+            </tr>
         );
     }
 }
@@ -43,9 +49,12 @@ class Entry extends Component{
 
 
 const DifferedEntries = styled.section`
-    color: ${props => props.isIncome ? 'green' : 'red'}
+    color: ${props => props.isIncome ? 'white' : '#7f8ff4'};
+    background-color: rgb(71, 45, 13);
 `;
-
+// $input-bg-color: #fff;
+// $input-text-color: #a3a3a3;
+// $button-bg-color: #7f8ff4;
 // not working on object for me, only on primitive types, one level
 // Entry.defaultProps = {
 //     entry:  {
