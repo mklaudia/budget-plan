@@ -4,7 +4,6 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: [
         './src/index.js',
-        // './src/component/input/Form.css'
     ],
     module: {
         rules: [

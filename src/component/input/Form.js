@@ -43,7 +43,7 @@ export class Form extends Component {
 
     handleChange = (date) => {
         this.setState({
-          startDate: date
+          date: date
         });
     }
 
