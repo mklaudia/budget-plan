@@ -26,18 +26,20 @@ class Entry extends Component{
         return(
             <tr>
             <DifferedEntries isIncome={entry.isIncome}>
-                <th>{entry.amount}</th>
+              <td>
+                    <input 
+                        type="submit"
+                        value = "X"
+                        onClick={() => {this.onDelete()}}
+                    />
+                </td>
+
+                <td>{entry.amount}</td>
                 
-                <th>{entry.date.toString()}</th>
+                <td>{entry.date.toString()}</td>
                
-                <th>{entry.info}</th>
-                <th>
-                <input 
-                    type="submit"
-                    value = "X"
-                    onClick={() => {this.onDelete()}}
-                />
-                </th>
+                <td>{entry.info}</td>
+
             </DifferedEntries>
             </tr>
         );
@@ -47,9 +49,8 @@ class Entry extends Component{
 
 
 const DifferedEntries = styled.section`
-    color: ${props => props.isIncome ? '#a3a3a3' : '#7f8ff4'};
+    color: ${props => props.isIncome ? 'white' : '#7f8ff4'};
     background-color: rgb(71, 45, 13);
-
 `;
 // $input-bg-color: #fff;
 // $input-text-color: #a3a3a3;

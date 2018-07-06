@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Entry from './Entry';
+import style from './EntryList.less';
 
 const ALL = "ALL";
 const INCOMES = "INCOMES";
 const SPENDINGS = "SPENDINGS";
-// const {ALL, INCOMES, SPENDINGS} = {"ALL", "INCOMES", "SPENDINGS"};
 
 export default class EntryList extends Component{
     getFilteredEntries = (filter, entries) => {
@@ -64,7 +64,7 @@ export default class EntryList extends Component{
                     </tbody>
                     </table> 
 			
-                    <div>
+                    <div className="total">
                         The total is: {this.getTotal(this.props.entries)}
                     </div>
             </div>
