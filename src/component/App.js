@@ -8,6 +8,7 @@ import Header from './header/Header';
 import Form from './input/Form';
 import EntryList from './output/EntryList';
 import Filter from './filter/Filter';
+import styles from './App.scss';
 
 import {actionToInitEntries, actionToAddEntry, actionToEditEntry} from '../action/entryActions';
 import entryStore from '../store/entryStore';
