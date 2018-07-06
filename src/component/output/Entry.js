@@ -24,18 +24,22 @@ class Entry extends Component{
         {console.log(this.props)}
         const entry = {...defaultEntry, ...this.props.entry};
         return(
+            <tr>
             <DifferedEntries isIncome={entry.isIncome}>
-                <label>{entry.amount}</label>
-                <span> - </span>
-                <label>{entry.date.toString()}</label>
-                <span> - </span>
-                <label>{entry.info}</label>
+                <th>{entry.amount}</th>
+                
+                <th>{entry.date.toString()}</th>
+               
+                <th>{entry.info}</th>
+                <th>
                 <input 
                     type="submit"
                     value = "X"
                     onClick={() => {this.onDelete()}}
                 />
+                </th>
             </DifferedEntries>
+            </tr>
         );
     }
 }

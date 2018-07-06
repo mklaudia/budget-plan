@@ -31,14 +31,16 @@ export default class EntryList extends Component{
 
     render(){
         return(
+            <Router>
             <div>
-                <Router>
-                    <div>
+              
+                 
                         <Route exact path="/incomes" render={props => (
                                 <div>These are all your incomes! :)</div>
                             )}
                         />
-
+                 <table>
+                     <tbody>
                         <Route exact path="/" render={props => 
                                 this.getFilteredEntries(ALL, this.props.entries).map( 
                                     entry => <Entry key={entry.key} entry={entry}/> 
@@ -59,12 +61,14 @@ export default class EntryList extends Component{
                                 )
                             }
                         />
-                    </div>
-				</Router>
+                    </tbody>
+                    </table> 
+			
                     <div>
                         The total is: {this.getTotal(this.props.entries)}
                     </div>
             </div>
+            </Router>
         );
     }
 }
