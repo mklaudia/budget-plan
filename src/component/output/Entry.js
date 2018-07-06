@@ -43,9 +43,13 @@ class Entry extends Component{
 
 
 const DifferedEntries = styled.section`
-    color: ${props => props.isIncome ? 'green' : 'red'}
-`;
+    color: ${props => props.isIncome ? '#a3a3a3' : '#7f8ff4'};
+    background-color: rgb(71, 45, 13);
 
+`;
+// $input-bg-color: #fff;
+// $input-text-color: #a3a3a3;
+// $button-bg-color: #7f8ff4;
 // not working on object for me, only on primitive types, one level
 // Entry.defaultProps = {
 //     entry:  {

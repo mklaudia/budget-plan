@@ -14,10 +14,15 @@ module.exports = {
             
           },
           {
-            test:/\.(s*)css$/,
-            use:['style-loader','css-loader', 'sass-loader'],
+            test:/\.less$/,
+            use:['style-loader','css-loader', 'less-loader'],
             exclude: /node_modules/
          },
+         {
+          test:/\.(s*)css$/,
+          use:['style-loader','css-loader', 'sass-loader'],
+          exclude: /node_modules/
+          },
         ]
     },
     resolve: {
