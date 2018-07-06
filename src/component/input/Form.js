@@ -51,19 +51,23 @@ export class Form extends Component {
         return(
             
             <div>
+                <span>
                 <input className="btn"
                     type="submit"
                     value = "Add Income"
                     onClick={() => {this.onClickOnAddIncome()}}
                 />
+                </span>
                 
+                <span>
                 <input className="form__field"
                     type="number"
-                    
+                    placeholder="Amount"
                     value = {this.state.amount}
                     onChange={event => this.setState({amount: event.target.value})}
                 />
-                <label placeholder="Amount" alt="Placeholder">fdafdfdsf</label>
+
+                </span>
                 <DatePicker className="form__field"
                     selected={this.state.date}
                     onChange={this.handleChange}
@@ -74,12 +78,13 @@ export class Form extends Component {
                     value = {this.state.info}
                     onChange={event => this.setState({info: event.target.value})}
                 />
+                <span id="last">
                 <input className="btn"
                     type="submit"
                     value = "Add Spending"
                     onClick={() => {this.onClickOnAddSpending()}}
                 />
-
+</span>
                 
             </div>
         );
