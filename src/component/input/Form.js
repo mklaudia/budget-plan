@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
-// import styles from './Form.scss';
+import styles from './Form.scss';
 import moment from 'moment';
 
 import {actionToAddEntry, actionToEditEntry} from '../../action/entryActions';
@@ -50,28 +50,28 @@ export class Form extends Component {
     render(){
         return(
             <div>
-                <input className="form__field"
+                <input className="btn"
                     type="submit"
                     value = "Add Income"
                     onClick={() => {this.onClickOnAddIncome()}}
                 />
-                <input 
+                <input className="form__field"
                     type="number"
                     placeholder="Amount"
                     value = {this.state.amount}
                     onChange={event => this.setState({amount: event.target.value})}
                 />
-                <DatePicker
+                <DatePicker className="form__field"
                     selected={this.state.date}
                     onChange={this.handleChange}
                 />
-                <input
+                <input className="form__field"
                     type="text"
                     placeholder="Info"
                     value = {this.state.info}
                     onChange={event => this.setState({info: event.target.value})}
                 />
-                <input
+                <input className="btn"
                     type="submit"
                     value = "Add Spending"
                     onClick={() => {this.onClickOnAddSpending()}}
